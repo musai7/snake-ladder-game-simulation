@@ -5,9 +5,10 @@ public class SnakeLadderGame {
 	public final static int SNAKE = 2;
 
 	public static void main(String[] args) {
-		int player1Position = 0, temp = 0;
+		int player1Position = 0, temp = 0, diceRollTimes = 0;
 		while (true) {
 			int diceNum = (int) (Math.random() * 6 + 1);
+			diceRollTimes++;
 			System.out.println("dice value " + diceNum);
 			temp = player1Position;
 			player1Position += diceNum;
@@ -43,8 +44,9 @@ public class SnakeLadderGame {
 			if (player1Position == 100) {
 				break;
 			}
-
 		}
-
+		System.out.println("number of times player one roll the die : " + diceRollTimes);
+		System.out.println("player one win and position : " + player1Position);
 	}
+
 }
