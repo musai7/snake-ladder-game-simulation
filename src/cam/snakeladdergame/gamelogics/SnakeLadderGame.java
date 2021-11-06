@@ -5,7 +5,7 @@ public class SnakeLadderGame {
 	public final static int SNAKE = 2;
 
 	public int snakeLadderGame(int playerPosition, int player) {
-		int temp = 0;
+		int previousPosition = 0;
 		int diceNum = (int) (Math.random() * 6 + 1);//getting random dice number
 		System.out.println("now player " + player + " turn");
 		System.out.println("dice number " + diceNum);
@@ -16,24 +16,23 @@ public class SnakeLadderGame {
 		if (playerPosition == 100) {
 			return playerPosition;
 		}
-		// System.out.println("player"+player+"position " + playerPosition);
 		double random = Math.random() * 3;
-		temp = playerPosition;
+		previousPosition = playerPosition;
 		switch ((int) random) {
 		case LADDER:
 			System.out.println("player entered ladder position ");
 			playerPosition += diceNum;
 			if (playerPosition > 100) {
-				playerPosition = temp;
+				playerPosition = previousPosition;
 			}
 			System.out.println("player get another chance to roll dice ");
 			SnakeLadderGame game = new SnakeLadderGame();
 			playerPosition = game.snakeLadderGame(playerPosition, player);
-			break;
+			return playerPosition;
 		case SNAKE:
 			System.out.println("player entered snake position ");
 			playerPosition -= diceNum;
-			temp = playerPosition;
+			previousPosition = playerPosition;
 			if (playerPosition < 0) {
 				playerPosition = 0;
 			}
